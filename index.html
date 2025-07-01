@@ -7,9 +7,18 @@
   <body>	
 <video id="videoa" class="videoa" autoplay></video>
 <center><p id="bs" class="bs">1.0X</p></center>
-<input type="range" min="0" max="19" step="0.01" value="0" id="nx" class="nx"/>
+<input type="range" min="0" max="4" step="0.01" value="0" id="nx" class="nx"/>
+<img src="lpb.jpg" id="lp" class="lp"/>
   </body>
 <style>
+.lp{
+position:fixed;
+top:580px;
+width:100vw;
+z-index:1;
+transform:rotate(0deg);
+z-index:10;
+}
 .videoa{
 position:fixed;
 top:0;
@@ -25,22 +34,25 @@ margin-top:0vh;
 }
 .nx{
 position:fixed;
-z-index:2;
-width:50%;
-bottom:2%;
+z-index:100;
+width:80%;
+bottom:-15%;
+opacity:0;
+height:250px;
 left:0;
+transform:rotate(180deg);
 right:0;
 margin:0 auto;
 }
 .bs{
 position:fixed;
 z-index:2;
-bottom:10%;
+bottom:18%;
 left:0;
 right:0;
 margin:0 auto;
 font-size:30px;
-//mix-blend-mode:difference;
+mix-blend-mode:difference;
 }
 </style>
   <script>
@@ -56,6 +68,14 @@ videoa.style.width=nx.value * 50 + 100 + "vw";
 videoa.style.height=nx.value * 50 + 100 +"vh";
 videoa.style.marginLeft=nx.value * -25 +"vw";
 videoa.style.marginTop=nx.value * -25 +"vh";
+});
+hlsza = 0;
+hlszb = 360 - hlsza;
+const tyran = document.getElementById("nx");
+tyran.addEventListener('input',function(){
+hlsza = nx.value;
+hlszb = 360 - (hlsza * 22.5);
+lp.style.transform="rotate("+hlszb+"deg)";
 });
 </script>
 </html>
